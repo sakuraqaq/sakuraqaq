@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sakura.dao.ReplyMapper">
+
+    <resultMap id="TestMap" type="com.sakura.entity.Reply">
+        <result column="text_neirong" property="text_neirong" jdbcType="VARCHAR"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="text_user" property="text_user" jdbcType="VARCHAR"/>
+        <result column="text_PostN" property="text_PostN" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectReply" parameterType="java.lang.Integer"  resultMap="TestMap">
+        SELECT * FROM Reply WHERE text_PostN = #{text_PostN}
+    </select>
+
+
+    <insert id="insertReply" parameterType="com.sakura.entity.Reply">
+      insert into Reply (text_neirong,text_user,text_PostN) value (#{text_neirong},#{text_user},#{text_PostN})
+    </insert>
+
+    <delete id="deleteReply" parameterType="java.lang.Integer">
+        DELETE FROM Reply WHERE id = #{id}
+    </delete>
+
+
+
+</mapper>

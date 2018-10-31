@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sakura.dao.PostMapper">
+    <resultMap id="STestMap" type="com.sakura.entity.Post">
+        <result column="PostText" property="PostText" jdbcType="VARCHAR"/>
+        <result column="PostTitle" property="PostTitle" jdbcType="VARCHAR"/>
+        <result column="PostNumber" property="PostNumber" jdbcType="INTEGER"/>
+        <result column="PostUser" property="PostUser" jdbcType="VARCHAR"/>
+        <result column="PostZan" property="PostZan" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectPost"  resultMap="STestMap">
+        SELECT * FROM Post
+    </select>
+
+    <resultMap id="SSTestMap" type="com.sakura.entity.Post">
+        <result column="PostText" property="PostText" jdbcType="VARCHAR"/>
+        <result column="PostTitle" property="PostTitle" jdbcType="VARCHAR"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="PostUser" property="PostUser" jdbcType="VARCHAR"/>
+        <result column="PostZan" property="PostZan" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectOnePost" parameterType="java.lang.Integer"  resultMap="SSTestMap">
+        SELECT * FROM Post
+        WHERE id = #{id}
+    </select>
+
+
+    <delete id="deletePost" parameterType="java.lang.Integer">
+        DELETE FROM Post WHERE id = #{id}
+    </delete>
+
+
+    <insert id="insertPost" parameterType="com.sakura.entity.Post">
+      insert into Post (PostText,PostUser,PostTitle) value (#{postText},#{postUser},#{postTitle})
+    </insert>
+
+    <update id="updatePost" parameterType="java.lang.Integer">
+
+    </update>
+
+</mapper>
+
