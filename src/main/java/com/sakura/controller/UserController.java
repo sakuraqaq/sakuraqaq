@@ -1,4 +1,4 @@
 package com.sakura.controller;
 
-public class T {
+public class UserController {
 }
